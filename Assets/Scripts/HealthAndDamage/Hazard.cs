@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 public class Hazard : MonoBehaviour
 {
     public float damageAmount;
     public List<string> tags;
+
+    public UnityEvent OnHit;
 
     void OnTriggerEnter(Collider collision)
     {
@@ -16,6 +20,7 @@ public class Hazard : MonoBehaviour
         {
             health.TakeDamage(damageAmount);
         }
+        OnHit.Invoke();
     }
     public void OnCollisionEnter(Collision collision)
     {
@@ -25,5 +30,6 @@ public class Hazard : MonoBehaviour
         {
             health.TakeDamage(damageAmount);
         }
+        OnHit.Invoke();
     }
 }

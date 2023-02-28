@@ -6,6 +6,11 @@ public class PlayerAttacks : MonoBehaviour
 {
     Animator anim;
 
+    public GameObject projectile;
+    public Transform launchPoint;
+
+    public float lobSpeed, lobLift;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +23,7 @@ public class PlayerAttacks : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             anim.Play("Shoot");
+            Shoot();
         }
         if (Input.GetKey(KeyCode.R))
         {
@@ -27,5 +33,11 @@ public class PlayerAttacks : MonoBehaviour
         {
             anim.SetBool("Taunt", false);
         }
+    }
+    void Shoot()
+    {
+        GameObject currentproj = Instantiate(projectile, launchPoint.position, Quaternion.LookRotation(transform.forward));
+
+        currentproj.GetComponent<Rigidbody>().AddForce((anim.transform.forward * lobSpeed) + (Vector3.up * lobLift), ForceMode.Impulse);
     }
 }
