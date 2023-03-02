@@ -25,6 +25,7 @@ public class Hazard : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         if (!tags.Contains(collision.gameObject.tag)) return;
+
         Health health = collision.gameObject.GetComponent<Health>();
         if (health != null)
         {

@@ -1,11 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CharacterMovement : MonoBehaviour
 {
-    [Tooltip("Movement Values")]
-    [SerializeField] float movementSpeed, rotationSpeed, gravityForce, jumpForce;
+    [Header("Movement Values")]
+    [SerializeField] float movementSpeed;
+    [SerializeField] float rotationSpeed;
+    [SerializeField] float gravityForce;
+    [SerializeField] float jumpForce;
+
+    [Header("Controls")]
+    public KeyCode left;
+    public KeyCode right;
+    public KeyCode up;
+    public KeyCode down;
+    public KeyCode jump;
 
     //Components 
     CharacterController cc;
@@ -40,8 +51,8 @@ public class CharacterMovement : MonoBehaviour
             playerVelocity.y = 0;
         }
 
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        float h = (Convert.ToInt64(Input.GetKey(left))*-1) + Convert.ToInt64(Input.GetKey(right));
+        float v = (Convert.ToInt64(Input.GetKey(down)) * -1) + Convert.ToInt64(Input.GetKey(up));
 
         //Determin camera direction on a flat plaie
         Vector3 camh = cam.transform.right;
@@ -74,7 +85,7 @@ public class CharacterMovement : MonoBehaviour
     }
     public void ProcessGravity()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && groundedPlayer)
+        if(Input.GetKeyDown(jump) && groundedPlayer)
         {
             anim.SetBool("Jump", true);
             playerVelocity.y += Mathf.Sqrt(jumpForce * -3.0f * gravityForce);
