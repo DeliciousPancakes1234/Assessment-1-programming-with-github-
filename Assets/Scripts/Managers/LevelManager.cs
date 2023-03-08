@@ -44,7 +44,7 @@ public class LevelManager : MonoBehaviour
     public GameStates currentState;
 
     [Header("Attached Components and Scripts")]
-    public InLevelUI UIManager;
+    public InLevelUIManager UIManager;
 
     
 
