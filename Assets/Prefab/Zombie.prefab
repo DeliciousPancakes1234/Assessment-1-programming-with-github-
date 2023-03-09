@@ -349,6 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c5acb225e066284daa75aabea56567f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: []
   target: {fileID: 0}
 --- !u!114 &6193299766357878930
 MonoBehaviour:
@@ -362,8 +363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26befb8372ad1d441b0044d0b4cddbb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  currentHealth: 10
+  maxHealth: 50
+  currentHealth: 50
   isDead: 0
   OnDamaged:
     m_PersistentCalls:
