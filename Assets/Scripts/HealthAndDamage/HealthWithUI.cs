@@ -23,7 +23,7 @@ public class HealthWithUI : Health
         UpdateUI();
     }
     
-    void UpdateUI()
+    public void UpdateUI()
     {
         if (healthBar)
         {

@@ -69,6 +69,18 @@ public class LevelManager : MonoBehaviour
     {
         currentState = GameStates.Prepping;
         timer.StartTimer(timeBetweenWaves);
+
+        foreach(PlayerData player in players)
+        {
+            if (player.GetComponent<Health>().isDead)
+            {
+                SpawnPlayerOnWaveEnd(player.gameObject);
+            }
+            else
+            {
+                player.wavesSurvived++;
+            }
+        }
     }
     //Find and run the current wave until all enemies are dead 
     public void BeginWave()
@@ -96,6 +108,20 @@ public class LevelManager : MonoBehaviour
     //process score and update the other scripts 
     public void PlayerDeath(int playerNumber)
     {
+        //update player score 
+        players[playerNumber].deaths++;
+
+        //Get a game object reference to the player 
+        GameObject currentPlayer = players[playerNumber -1].gameObject;
+
+        //Deactivate components
+        currentPlayer.GetComponent<CharacterController>().enabled = false;
+        currentPlayer.GetComponent<Collider>().enabled = false;
+        currentPlayer.GetComponent<Health>().enabled = false;
+        currentPlayer.GetComponent<CharacterMovement>().enabled = false;
+        currentPlayer.GetComponent<PlayerAttacks>().meleeCollider.SetActive(false);
+        currentPlayer.GetComponent<PlayerAttacks>().enabled = false;
+
         bool anyAlive = false;
         foreach(PlayerData player in players)
         {
@@ -109,5 +135,24 @@ public class LevelManager : MonoBehaviour
             currentState = GameStates.Lost;
             UIManager.EndGameUI();
         }
+    }
+    
+    void SpawnPlayerOnWaveEnd(GameObject player)
+    {
+        //Deactivate components
+        player.GetComponent<CharacterController>().enabled = true;
+        player.GetComponent<Collider>().enabled = true;
+
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+        playerHealth.enabled = true;
+        playerHealth.currentHealth = playerHealth.maxHealth * 0.75f;
+        playerHealth.UpdateUI();
+
+
+
+        player.GetComponent<CharacterMovement>().enabled = true;
+        player.GetComponent<PlayerAttacks>().enabled = true;
+        player.GetComponentInChildren<Animator>().SetBool("Dead", false);
+
     }
 }

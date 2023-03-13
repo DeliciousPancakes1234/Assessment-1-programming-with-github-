@@ -15,6 +15,7 @@ public class Health : MonoBehaviour
 
     public virtual void TakeDamage(float damageAmount)
     {
+        if (isDead) return;
         Debug.Log("OOF");
         OnDamaged.Invoke();
 
