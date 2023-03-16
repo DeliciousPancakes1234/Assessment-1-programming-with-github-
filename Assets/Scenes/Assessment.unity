@@ -1322,7 +1322,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561805126}
-  m_LocalRotation: {x: 0.40709358, y: 0.00000001571607, z: -0.0000000070046062, w: 0.91338646}
+  m_LocalRotation: {x: 0.40709358, y: 0.000000015716076, z: -0.000000007004608, w: 0.91338646}
   m_LocalPosition: {x: -4.97, y: 5.94, z: -5.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1851,7 +1851,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702895917}
-  m_LocalRotation: {x: 0.43636626, y: 0.0000000025298337, z: -0.0000000012269091, w: 0.8997692}
+  m_LocalRotation: {x: 0.43636626, y: 0.0000000032344292, z: -0.0000000015686198, w: 0.8997692}
   m_LocalPosition: {x: 0, y: 6.43, z: -5.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3065,7 +3065,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166389562}
-  m_LocalRotation: {x: 0.43636626, y: 0.0000000025298337, z: -0.0000000012269091, w: 0.8997692}
+  m_LocalRotation: {x: 0.43636626, y: 0.0000000032344292, z: -0.0000000015686198, w: 0.8997692}
   m_LocalPosition: {x: 0, y: 6.43, z: -5.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4786,7 +4786,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1659755116}
-  m_LocalRotation: {x: 0.40709358, y: 0.00000001571607, z: -0.0000000070046062, w: 0.91338646}
+  m_LocalRotation: {x: 0.40709358, y: 0.000000015716076, z: -0.000000007004608, w: 0.91338646}
   m_LocalPosition: {x: 0, y: 5.94, z: -5.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8281,6 +8281,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6193299766357878931, guid: c024a83f6cbba234f9cb0ab72707f916, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6193299766357878932, guid: c024a83f6cbba234f9cb0ab72707f916, type: 3}
       propertyPath: target
       value: 
