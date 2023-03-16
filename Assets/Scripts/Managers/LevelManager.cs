@@ -135,6 +135,8 @@ public class LevelManager : MonoBehaviour
             currentState = GameStates.Lost;
             UIManager.EndGameUI();
         }
+
+        
     }
     
     void SpawnPlayerOnWaveEnd(GameObject player)
