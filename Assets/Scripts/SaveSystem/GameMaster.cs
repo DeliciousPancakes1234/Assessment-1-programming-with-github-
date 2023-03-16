@@ -20,18 +20,18 @@ public class GameMaster : MonoBehaviour
             saveData.AddScore(1);
             PrintScore();
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.U))
         {
             SaveSystem.instance.SaveGame(saveData);
             Debug.Log("the game has been saved");
         }
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             saveData = SaveSystem.instance.LoadGame();
             Debug.Log("new data loaded");
             PrintScore();
         }
-        if (Input.GetKeyDown(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             saveData.ResetData();
             PrintScore();
