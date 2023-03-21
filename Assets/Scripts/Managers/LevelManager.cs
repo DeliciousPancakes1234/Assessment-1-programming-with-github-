@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
 
     //list of player prefabs
     [Header("Players")]
-    public PlayerData[] players;
+    public GameObject[] players;
     public Transform[] playerSpawns;
 
     //list of spawn points 
@@ -46,7 +46,6 @@ public class LevelManager : MonoBehaviour
     [Header("Attached Components and Scripts")]
     public InLevelUIManager UIManager;
 
-    
 
     // Start is called before the first frame update
     void Start()
@@ -70,7 +69,7 @@ public class LevelManager : MonoBehaviour
         currentState = GameStates.Prepping;
         timer.StartTimer(timeBetweenWaves);
 
-        foreach(PlayerData player in players)
+        foreach(GameObject player in players)
         {
             if (player.GetComponent<Health>().isDead)
             {
@@ -109,7 +108,7 @@ public class LevelManager : MonoBehaviour
     public void PlayerDeath(int playerNumber)
     {
         //update player score 
-        players[playerNumber].deaths++;
+        players[playerNumber - 1].deaths++;
 
         //Get a game object reference to the player 
         GameObject currentPlayer = players[playerNumber -1].gameObject;
@@ -123,7 +122,7 @@ public class LevelManager : MonoBehaviour
         currentPlayer.GetComponent<PlayerAttacks>().enabled = false;
 
         bool anyAlive = false;
-        foreach(PlayerData player in players)
+        foreach(GameObject player in players)
         {
             if(player.GetComponent<PlayerHealth>().isDead == false)
             {
@@ -135,8 +134,6 @@ public class LevelManager : MonoBehaviour
             currentState = GameStates.Lost;
             UIManager.EndGameUI();
         }
-
-        
     }
     
     void SpawnPlayerOnWaveEnd(GameObject player)
