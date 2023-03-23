@@ -23,14 +23,14 @@ public class GameMaster : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.U))
         {
-            saveData.FillSaveData();
+            GameManager.instance.FillSaveData();
             SaveSystem.instance.SaveGame(saveData);
             Debug.Log("the game has been saved");
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
             saveData = SaveSystem.instance.LoadGame();
-            saveData.FillTempList();
+            GameManager.instance.FillTempList();
             Debug.Log("new data loaded");
             PrintScore();
         }

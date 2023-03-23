@@ -1499,7 +1499,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561805126}
-  m_LocalRotation: {x: 0.40709358, y: -0.000000015716076, z: 0.000000007004608, w: 0.91338646}
+  m_LocalRotation: {x: 0.40709358, y: 0.000000030755576, z: -0.00000001370767, w: 0.91338646}
   m_LocalPosition: {x: -4.97, y: 5.94, z: -5.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1669,14 +1669,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 576697753}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3da730241fc58314cbbdae3b348b861f, type: 3}
+  m_Script: {fileID: 11500000, guid: dfae9de5d701c9545bb2d928be5f88f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: Boogie
   playerNumber: 1
-  wavesSurvived: 0
-  kills: 0
-  deaths: 0
 --- !u!1 &594378688
 GameObject:
   m_ObjectHideFlags: 0
@@ -2028,7 +2024,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702895917}
-  m_LocalRotation: {x: 0.43636626, y: -0.000000015481769, z: 0.000000007508282, w: 0.8997692}
+  m_LocalRotation: {x: 0.43636626, y: 0.0000000017965609, z: -8.7128865e-10, w: 0.8997692}
   m_LocalPosition: {x: 0, y: 6.43, z: -5.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3042,7 +3038,6 @@ GameObject:
   - component: {fileID: 1117206778}
   - component: {fileID: 1117206777}
   - component: {fileID: 1117206776}
-  - component: {fileID: 1117206779}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3094,8 +3089,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - {fileID: 576697760}
-  - {fileID: 1288087688}
+  - {fileID: 576697753}
+  - {fileID: 1288087681}
   playerSpawns: []
   waves:
   - {fileID: 2040101989}
@@ -3120,19 +3115,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1117206779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117206775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a3401f8671356848a74525214a793db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fileName: save
 --- !u!1 &1155518740
 GameObject:
   m_ObjectHideFlags: 0
@@ -3242,7 +3224,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166389562}
-  m_LocalRotation: {x: 0.43636626, y: -0.000000015481769, z: 0.000000007508282, w: 0.8997692}
+  m_LocalRotation: {x: 0.43636626, y: 0.0000000017965609, z: -8.7128865e-10, w: 0.8997692}
   m_LocalPosition: {x: 0, y: 6.43, z: -5.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3374,7 +3356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4960117748ed0354abbbd0acddb1b2e0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4960117748ed0354abbbd0acddb1b2e0, type: 3}
       propertyPath: m_TagString
@@ -3924,14 +3906,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1288087681}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3da730241fc58314cbbdae3b348b861f, type: 3}
+  m_Script: {fileID: 11500000, guid: dfae9de5d701c9545bb2d928be5f88f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: woogie
   playerNumber: 2
-  wavesSurvived: 0
-  kills: 0
-  deaths: 0
 --- !u!1 &1302557947
 GameObject:
   m_ObjectHideFlags: 0
@@ -5196,7 +5174,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1659755116}
-  m_LocalRotation: {x: 0.40709358, y: -0.000000015716076, z: 0.000000007004608, w: 0.91338646}
+  m_LocalRotation: {x: 0.40709358, y: 0.000000030755576, z: -0.00000001370767, w: 0.91338646}
   m_LocalPosition: {x: 0, y: 5.94, z: -5.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5761,7 +5739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTypes:
-  - {fileID: 1020229470573069551, guid: d161986b85b7ad94eb15e71a1a677e70, type: 3}
+  - {fileID: 6193299766357878940, guid: c024a83f6cbba234f9cb0ab72707f916, type: 3}
   spawnPoints:
   - {fileID: 1674963045}
   - {fileID: 1155518741}

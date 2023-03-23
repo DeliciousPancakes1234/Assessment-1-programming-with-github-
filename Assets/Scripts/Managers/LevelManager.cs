@@ -73,11 +73,12 @@ public class LevelManager : MonoBehaviour
         {
             if (player.GetComponent<Health>().isDead)
             {
-                SpawnPlayerOnWaveEnd(player.gameObject);
+                SpawnPlayerOnWaveEnd(player);
             }
             else
             {
-                player.wavesSurvived++;
+                int playerNum = player.GetComponent<PlayerNumber>().playerNumber -1;
+                GameManager.instance.currentPlayers[playerNum].wavesSurvived++;
             }
         }
     }
@@ -108,10 +109,10 @@ public class LevelManager : MonoBehaviour
     public void PlayerDeath(int playerNumber)
     {
         //update player score 
-        players[playerNumber - 1].deaths++;
+        GameManager.instance.currentPlayers[playerNumber - 1].deaths++;
 
         //Get a game object reference to the player 
-        GameObject currentPlayer = players[playerNumber -1].gameObject;
+        GameObject currentPlayer = players[playerNumber -1];
 
         //Deactivate components
         currentPlayer.GetComponent<CharacterController>().enabled = false;
