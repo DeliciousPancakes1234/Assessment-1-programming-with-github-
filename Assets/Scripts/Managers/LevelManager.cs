@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+
 /// <summary>
 /// Manages game state and level, plays appropriate waves and manages players scoring and respawning
 /// Treat this like the information hub for your level
@@ -52,6 +55,11 @@ public class LevelManager : MonoBehaviour
     {
         timer.StartTimer(5f);
         currentState = GameStates.Prepping;
+
+        for(int i = 0; i < players.Length; i++)
+        {
+            players[i].GetComponentInChildren<TMP_Text>().text = GameManager.instance.currentPlayers[i].playerName;
+        }
     }
 
     // Update is called once per frame
@@ -103,6 +111,7 @@ public class LevelManager : MonoBehaviour
         {
             currentState = GameStates.Won;
             UIManager.EndGameUI();
+            Invoke("SaveResultsAndLoadScene", 5);
         }
     }
     //process score and update the other scripts 
@@ -134,6 +143,7 @@ public class LevelManager : MonoBehaviour
         {
             currentState = GameStates.Lost;
             UIManager.EndGameUI();
+            Invoke("SaveResultsAndLoadScene",5);
         }
     }
     
@@ -154,5 +164,11 @@ public class LevelManager : MonoBehaviour
         player.GetComponent<PlayerAttacks>().enabled = true;
         player.GetComponentInChildren<Animator>().SetBool("Dead", false);
 
+    }
+    void SaveResultsAndLoadScene()
+    {
+        GameManager.instance.FillTempList();
+        GameManager.instance.FillSaveData();
+        SceneManager.LoadScene("Results");
     }
 }
