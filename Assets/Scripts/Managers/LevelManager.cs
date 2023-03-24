@@ -87,6 +87,7 @@ public class LevelManager : MonoBehaviour
             {
                 int playerNum = player.GetComponent<PlayerNumber>().playerNumber -1;
                 GameManager.instance.currentPlayers[playerNum].wavesSurvived++;
+                Debug.Log(GameManager.instance.currentPlayers[playerNum].wavesSurvived);
             }
         }
     }
@@ -102,9 +103,10 @@ public class LevelManager : MonoBehaviour
     //Track waves completed and run victory
     public void EndWave()
     {
-        if(currentWave < waves.Length)
+        currentWave++;
+        
+        if (currentWave < waves.Length)
         {
-            currentWave++;
             StartPrep();
         }
         else

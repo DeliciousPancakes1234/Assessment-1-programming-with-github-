@@ -5012,7 +5012,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.000020027, y: -0.00081487984}
-  m_SizeDelta: {x: 15.358, y: 1543.482}
+  m_SizeDelta: {x: 15.358, y: 967.022}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &526413520
 GameObject:
@@ -5455,8 +5455,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.9890137, y: 395.99985}
-  m_SizeDelta: {x: 1105.838, y: 745.338}
+  m_AnchoredPosition: {x: 0, y: -28}
+  m_SizeDelta: {x: 1105.838, y: 983.099}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &589218707
 MonoBehaviour:
@@ -5478,7 +5478,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'this game is a local multiplayer game made for two players. '
+  m_text: "this game is a local multiplayer game made for two players. \n\nThis game
+    is a short coop fighting game where you and your teammate have to kill waves
+    of monsters to succeed. \n\nThis is just a small game project made for a school
+    assessment so it doesn't have much content, but hopefully its still somewhat
+    enjoyable. \n\nThanks for downloading!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -5588,7 +5592,7 @@ RectTransform:
   m_Father: {fileID: 1674646444}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.34704328}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -14205,8 +14209,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 631454292}
   m_HandleRect: {fileID: 631454291}
   m_Direction: 2
-  m_Value: 1.0000015
-  m_Size: 0.6529567
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
