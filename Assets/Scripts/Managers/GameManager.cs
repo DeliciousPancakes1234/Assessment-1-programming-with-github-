@@ -81,11 +81,11 @@ public class GameManager : MonoBehaviour
     }
     int SortPlayerFunc(PlayerData a, PlayerData b)
     {
-        if (a.wavesSurvived > b.wavesSurvived)
+        if (a.wavesSurvived < b.wavesSurvived)
         {
             return +1;
         }
-        else if (a.wavesSurvived < b.wavesSurvived)
+        else if (a.wavesSurvived > b.wavesSurvived)
         {
             return -1;
         }
@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour
         {
             return -1;
         }
+
     }
 
     public void AddPlayerScore(PlayerData data)
