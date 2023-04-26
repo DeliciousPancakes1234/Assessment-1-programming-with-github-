@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1171327263219854820}
   - component: {fileID: 540702784334442843}
   - component: {fileID: 540702784334442842}
-  - component: {fileID: 540702784334442846}
+  - component: {fileID: 2080472066386759392}
   m_Layer: 0
   m_Name: BulletModel
   m_TagString: Untagged
@@ -115,7 +115,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.50372446
   m_Center: {x: -0.0000024437904, y: 0.094198, z: -0.00000008940697}
---- !u!114 &540702784334442846
+--- !u!114 &2080472066386759392
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,25 +124,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 811104782849444913}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b61f120437c7a0a46b51d276bacef59d, type: 3}
+  m_Script: {fileID: 11500000, guid: 54748edbc9f573d44b1c4e0871a3054c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 0
+  autoDestroy: 1
+  timeTillDestruction: 5
   damageAmount: 20
   tags:
   - Enemy
   - Environment
   OnHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 811104782849444913}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

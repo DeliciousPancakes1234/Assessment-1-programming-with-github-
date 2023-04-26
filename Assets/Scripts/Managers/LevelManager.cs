@@ -173,4 +173,11 @@ public class LevelManager : MonoBehaviour
         GameManager.instance.FillSaveData();
         SceneManager.LoadScene("Results");
     }
+
+    public void IncreaseScore(int playerNumber)
+    {
+        GameManager.instance.currentPlayers[playerNumber].kills++;
+        UIManager.UpdateUI();
+        Debug.Log(GameManager.instance.currentPlayers[playerNumber].kills);
+    }
 }
