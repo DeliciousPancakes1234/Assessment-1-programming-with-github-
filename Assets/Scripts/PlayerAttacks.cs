@@ -21,10 +21,13 @@ public class PlayerAttacks : MonoBehaviour
     public KeyCode ranged;
     public KeyCode melee;
     public KeyCode taunt;
+
+    AudioSource shootingSound;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
+        shootingSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,6 +37,7 @@ public class PlayerAttacks : MonoBehaviour
         {
             anim.Play("Shoot");
             Shoot();
+            shootingSound.Play();
         }
         if (Input.GetKeyDown(melee))
         {

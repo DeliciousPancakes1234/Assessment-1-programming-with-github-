@@ -318,8 +318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26befb8372ad1d441b0044d0b4cddbb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
-  currentHealth: 50
+  maxHealth: 75
+  currentHealth: 75
   isDead: 0
   OnDamaged:
     m_PersistentCalls:
@@ -355,7 +355,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61f120437c7a0a46b51d276bacef59d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 6
+  damageAmount: 15
   tags:
   - Player
   OnHit:
