@@ -130,7 +130,7 @@ MonoBehaviour:
   playerNumber: 0
   autoDestroy: 1
   timeTillDestruction: 5
-  damageAmount: 20
+  damageAmount: 25
   tags:
   - Enemy
   - Environment
