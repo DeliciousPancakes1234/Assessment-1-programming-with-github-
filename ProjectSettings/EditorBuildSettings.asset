@@ -20,4 +20,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Results.unity
     guid: 22503a25970cc0945ab6004b611faae3
+  - enabled: 1
+    path: Assets/Scenes/CreateOrJoinARoom.unity
+    guid: aa74644c38422d942921be5a0fba1fc9
+  - enabled: 1
+    path: Assets/Scenes/WaitingForPlayers.unity
+    guid: 8c0eeaf4c1aba4c4b950f3cb4acd7704
+  - enabled: 1
+    path: Assets/Scenes/OnlineLauncher.unity
+    guid: 893e5917bb784b04b862ac5a397b97ba
   m_configObjects: {}
