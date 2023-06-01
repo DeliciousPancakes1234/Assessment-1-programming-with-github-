@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class OnlineLobby : MonoBehaviourPunCallbacks
 {
@@ -27,6 +28,18 @@ public class OnlineLobby : MonoBehaviourPunCallbacks
 
         numberOfPlayers.text = PhotonNetwork.CurrentRoom.PlayerCount.ToString() + "/" + PhotonNetwork.CurrentRoom.MaxPlayers;
     }
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        base.OnPlayerEnteredRoom(newPlayer);
+        numberOfPlayers.text = PhotonNetwork.CurrentRoom.PlayerCount.ToString() + "/" + PhotonNetwork.CurrentRoom.MaxPlayers;
+        Invoke("UpdateBoolsOnJoin", 2);
+    }
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        base.OnPlayerLeftRoom(otherPlayer);
+        numberOfPlayers.text = PhotonNetwork.CurrentRoom.PlayerCount.ToString() + "/" + PhotonNetwork.CurrentRoom.MaxPlayers;
+        view.RPC("ReadyPlayer", RpcTarget.All, otherPlayer.ActorNumber, false);
+    }
 
     public void UpdateName()
     {
@@ -35,15 +48,33 @@ public class OnlineLobby : MonoBehaviourPunCallbacks
 
     public void LoadLevel()
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            SceneManager.LoadScene(levelName);
-        }
-        else
+        if (!PhotonNetwork.IsMasterClient)
         {
             messages.text = "You are not the host, you can't do that";
         }
+        else if(PhotonNetwork.CurrentRoom.PlayerCount < PhotonNetwork.CurrentRoom.MaxPlayers)
+        {
+            messages.text = "Waiting on players, your lobby is not full yet";
+        }
+        else if (AllPlayersReady() == false)
+        {
+            messages.text = "All players are not ready";
+        }
+        else
+        {
+            SceneManager.LoadScene(levelName);
+        }
     }
+
+    bool AllPlayersReady()
+    {
+        foreach(bool item in playersReady)
+        {
+            if (item == false) return false;
+        }
+        return true;
+    }
+
     [PunRPC]
     public void ReadyPlayer(int playerNumber, bool isReady)
     {
@@ -52,5 +83,13 @@ public class OnlineLobby : MonoBehaviourPunCallbacks
     public void RunReadyPlayer(bool isReady)
     {
         view.RPC("ReadyPlayer", RpcTarget.All, PhotonNetwork.LocalPlayer.ActorNumber, isReady);
+    }
+
+    void UpdateBoolsOnJoin()
+    {
+        int playerNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+        bool isReady = playersReady[playerNumber - 1];
+
+        view.RPC("ReadyPlayer", RpcTarget.All, playerNumber, isReady);
     }
 }
