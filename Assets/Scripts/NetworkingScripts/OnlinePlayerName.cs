@@ -18,8 +18,17 @@ public class OnlinePlayerName : MonoBehaviour
 
         if (view.IsMine)
         {
-            view.RPC("UpdateName", RpcTarget.All, PhotonNetwork.LocalPlayer.NickName);
+            StartCoroutine(TriggerNameUpdate(PhotonNetwork.LocalPlayer.NickName));
         }
+    }
+
+    IEnumerator TriggerNameUpdate(string name)
+    {
+        yield return new WaitForSeconds(1);
+
+        view.RPC("UpdateName", RpcTarget.All, name);
+
+        yield return null;
     }
 
     [PunRPC]

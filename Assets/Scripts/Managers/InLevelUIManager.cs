@@ -5,6 +5,8 @@ using TMPro;
 
 public class InLevelUIManager : MonoBehaviour
 {
+    public bool isOnline = false;
+
     public TMP_Text centreText;
     public CanvasGroup resultGroup;
     public TMP_Text resultTitle;
@@ -12,16 +14,33 @@ public class InLevelUIManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        if(LevelManager.instance.currentState == LevelManager.GameStates.Prepping)
+        if (!isOnline)
         {
-            centreText.text = "Next wave in: \n" + LevelManager.instance.timer.displayTime;
-        }
-        else if(LevelManager.instance.currentState == LevelManager.GameStates.InWave)
-        {
-            WaveManager currentWave = LevelManager.instance.waves[LevelManager.instance.currentWave];
-            int EnemiesLeft = currentWave.maxNumberOverall - currentWave.killed;
+            if (LevelManager.instance.currentState == LevelManager.GameStates.Prepping)
+            {
+                centreText.text = "Next wave in: \n" + LevelManager.instance.timer.displayTime;
+            }
+            else if (LevelManager.instance.currentState == LevelManager.GameStates.InWave)
+            {
+                WaveManager currentWave = LevelManager.instance.waves[LevelManager.instance.currentWave];
+                int EnemiesLeft = currentWave.maxNumberOverall - currentWave.killed;
 
-            centreText.text = "survive \n" + EnemiesLeft.ToString() + "/" + currentWave.maxNumberOverall;
+                centreText.text = "survive \n" + EnemiesLeft.ToString() + "/" + currentWave.maxNumberOverall;
+            }
+        }
+        else
+        {
+            if (OnlineLevelManager.instance.currentState == OnlineLevelManager.GameStates.Prepping)
+            {
+                centreText.text = "Next wave in: \n" + OnlineLevelManager.instance.timer.displayTime;
+            }
+            else if (OnlineLevelManager.instance.currentState == OnlineLevelManager.GameStates.InWave)
+            {
+                WaveManager currentWave = OnlineLevelManager.instance.waves[OnlineLevelManager.instance.currentWave];
+                int EnemiesLeft = currentWave.maxNumberOverall - currentWave.killed;
+
+                centreText.text = "survive \n" + EnemiesLeft.ToString() + "/" + currentWave.maxNumberOverall;
+            }
         }
     }
 
@@ -32,13 +51,27 @@ public class InLevelUIManager : MonoBehaviour
 
     IEnumerator DisplayCanvas(float rate)
     {
-        if(LevelManager.instance.currentState == LevelManager.GameStates.Lost)
+        if (!isOnline)
         {
-            resultTitle.text = "You have died";
+            if (LevelManager.instance.currentState == LevelManager.GameStates.Lost)
+            {
+                resultTitle.text = "You have died";
+            }
+            else if (LevelManager.instance.currentState == LevelManager.GameStates.Won)
+            {
+                resultTitle.text = "Level cleared!";
+            }
         }
-        else if(LevelManager.instance.currentState == LevelManager.GameStates.Won)
+        else
         {
-            resultTitle.text = "Level cleared!";
+            if (OnlineLevelManager.instance.currentState == OnlineLevelManager.GameStates.Lost)
+            {
+                resultTitle.text = "You have died";
+            }
+            else if (OnlineLevelManager.instance.currentState == OnlineLevelManager.GameStates.Won)
+            {
+                resultTitle.text = "Level cleared!";
+            }
         }
 
         while(resultGroup.alpha < 0.9)

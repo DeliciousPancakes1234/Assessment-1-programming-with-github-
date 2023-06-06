@@ -41,7 +41,7 @@ public class OnlineLevelManager : MonoBehaviour
     public WaveManager[] waves;
     public int currentWave = 0;
 
-    public Timer timer;
+    public OnlineTimer timer;
 
     public float timeBetweenWaves;
 
@@ -68,16 +68,25 @@ public class OnlineLevelManager : MonoBehaviour
         int a = PhotonNetwork.LocalPlayer.ActorNumber - 1;
         GameObject player  = PhotonNetwork.Instantiate(playerPrefabs[a].name, playerSpawns[a].position, Quaternion.identity).gameObject;
         if (player == null) Debug.Log("No Player reference");
-        view.RPC("AddPlayerToList", RpcTarget.All, a, player);
+        Invoke("CallAddPlayerToList", 1);
 
         //assign camera in scene
-        player.GetComponentInChildren<Camera>().tag = "MainCamera";
+        //player.GetComponentInChildren<Camera>().tag = "MainCamera";
     }
 
-    [PunRPC]
-    void AddPlayerToList(int num, GameObject player)
+    void CallAddPlayerToList()
     {
-        players[num] = player;
+        view.RPC("AddPlayerToList", RpcTarget.All);
+    }
+    [PunRPC]
+    void AddPlayerToList() //Find al instances of players and add them to the array 
+    {
+        GameObject[] playersFound = GameObject.FindGameObjectsWithTag("Player");//find objects 
+        foreach(GameObject player in playersFound)//itterate through each object
+        {
+            int playerNum = player.GetComponent<PhotonView>().OwnerActorNr - 1;//get the objects player number
+            players[playerNum] = player;//assign the object to the correct slot 
+        }
     }
     // Update is called once per frame
     void Update()
