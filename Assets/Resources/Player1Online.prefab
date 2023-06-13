@@ -698,7 +698,7 @@ GameObject:
   - component: {fileID: -2872015476964008539}
   - component: {fileID: -7232297152585108000}
   - component: {fileID: 7854533687727382421}
-  - component: {fileID: 4958221693658421426}
+  - component: {fileID: 1582152537875395235}
   m_Layer: 0
   m_Name: Player1Online
   m_TagString: Player
@@ -714,7 +714,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218002637177864660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.06, z: 0}
+  m_LocalPosition: {x: 0, y: -0.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -905,9 +905,9 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 4958221693658421426}
+  - {fileID: 1582152537875395235}
   - {fileID: 7782152368154244935}
-  - {fileID: 3343316633932446919}
+  - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -960,7 +960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bdb9e09e985fd74ba4e73a204ec1682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4958221693658421426
+--- !u!114 &1582152537875395235
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1051,7 +1051,7 @@ GameObject:
   - component: {fileID: 1688163269008266173}
   - component: {fileID: 4723611182557317575}
   - component: {fileID: 7782152368154244935}
-  - component: {fileID: 3343316633932446919}
+  - component: {fileID: 2992398986144580282}
   m_Layer: 0
   m_Name: ybot
   m_TagString: Untagged
@@ -1139,7 +1139,7 @@ MonoBehaviour:
     LayerIndex: 1
   - SynchronizeType: 1
     LayerIndex: 2
---- !u!114 &3343316633932446919
+--- !u!114 &2992398986144580282
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

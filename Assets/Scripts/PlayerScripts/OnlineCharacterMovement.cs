@@ -53,7 +53,7 @@ public class OnlineCharacterMovement : MonoBehaviour
         float h = (Convert.ToInt64(Input.GetKey(KeyCode.A))*-1) + Convert.ToInt64(Input.GetKey(KeyCode.D));
         float v = (Convert.ToInt64(Input.GetKey(KeyCode.S)) * -1) + Convert.ToInt64(Input.GetKey(KeyCode.W));
 
-        //Determin camera direction on a flat plaie
+        //Determine camera direction on a flat plaie
         Vector3 camh = cam.transform.right;
         Vector3 camv = Vector3.Cross(camh, Vector3.up);
 
@@ -72,7 +72,7 @@ public class OnlineCharacterMovement : MonoBehaviour
         
 
         Quaternion desiredDirection = Quaternion.LookRotation(movementDirection);
-        transform.rotation = Quaternion.Lerp(transform.rotation, desiredDirection, rotationSpeed);
+        anim.transform.rotation = Quaternion.Lerp(anim.transform.rotation, desiredDirection, rotationSpeed);
 
         Vector3 animationVector = anim.transform.InverseTransformDirection(cc.velocity);
 
