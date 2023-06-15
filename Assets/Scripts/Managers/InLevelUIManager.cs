@@ -8,8 +8,11 @@ public class InLevelUIManager : MonoBehaviour
     public bool isOnline = false;
 
     public TMP_Text centreText;
+
     public CanvasGroup resultGroup;
+
     public TMP_Text resultTitle;
+
     public float fadeRate;
 
     public void UpdateUI()

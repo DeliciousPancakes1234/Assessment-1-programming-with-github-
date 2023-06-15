@@ -3257,7 +3257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTypes:
-  - {fileID: 3676833240063013552, guid: 5ab4cc2a2f73b2e48b221cc46f96efe1, type: 3}
+  - {fileID: 3676833240063013552, guid: d6b80e7e419329648980e9638d56afeb, type: 3}
   spawnPoints:
   - {fileID: 1009973008}
   - {fileID: 1700610827}
@@ -3265,6 +3265,7 @@ MonoBehaviour:
   maxNumberOverall: 12
   isActive: 0
   isComplete: 0
+  isOnline: 0
   timeBetweenSpawns: 1
   killed: 0
   EndWave:
@@ -6478,7 +6479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTypes:
-  - {fileID: 3676833240063013552, guid: 5ab4cc2a2f73b2e48b221cc46f96efe1, type: 3}
+  - {fileID: 3676833240063013552, guid: d6b80e7e419329648980e9638d56afeb, type: 3}
   spawnPoints:
   - {fileID: 1674963045}
   - {fileID: 1155518741}
@@ -6486,6 +6487,7 @@ MonoBehaviour:
   maxNumberOverall: 8
   isActive: 0
   isComplete: 0
+  isOnline: 0
   timeBetweenSpawns: 1
   killed: 0
   EndWave:
@@ -7311,7 +7313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTypes:
-  - {fileID: 3676833240063013552, guid: 5ab4cc2a2f73b2e48b221cc46f96efe1, type: 3}
+  - {fileID: 3676833240063013552, guid: d6b80e7e419329648980e9638d56afeb, type: 3}
   spawnPoints:
   - {fileID: 1189010223}
   - {fileID: 2092167902}
@@ -7319,6 +7321,7 @@ MonoBehaviour:
   maxNumberOverall: 4
   isActive: 0
   isComplete: 0
+  isOnline: 0
   timeBetweenSpawns: 0
   killed: 0
   EndWave:

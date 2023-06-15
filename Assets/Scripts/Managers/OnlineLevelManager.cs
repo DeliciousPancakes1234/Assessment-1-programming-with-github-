@@ -4,13 +4,15 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
 
 /// <summary>
 /// Manages game state and level, plays appropriate waves and manages players scoring and respawning
 /// Treat this like the information hub for your level
 /// </summary>
-/// 
-public class OnlineLevelManager : MonoBehaviour
+
+public class OnlineLevelManager : MonoBehaviour, IOnEventCallback
 {
     #region Singleton
     public static OnlineLevelManager instance;
@@ -28,13 +30,12 @@ public class OnlineLevelManager : MonoBehaviour
     }
     #endregion
 
+    #region variables
     //list of player prefabs
     [Header("Players")]
     public GameObject[] players;
     public GameObject[] playerPrefabs;
     public Transform[] playerSpawns;
-
-    //list of spawn points 
 
     //list of waves 
     [Header("Level Settings")]
@@ -52,7 +53,12 @@ public class OnlineLevelManager : MonoBehaviour
     public InLevelUIManager UIManager;
     PhotonView view;
 
+    //Event data 
 
+    private const byte CHANGE_STATE = 2;
+    #endregion
+
+    #region game set up
     // Start is called before the first frame update
     void Start()
     {
@@ -78,8 +84,9 @@ public class OnlineLevelManager : MonoBehaviour
     {
         view.RPC("AddPlayerToList", RpcTarget.All);
     }
+
     [PunRPC]
-    void AddPlayerToList() //Find al instances of players and add them to the array 
+    void AddPlayerToList() //Find all instances of players and add them to the array 
     {
         GameObject[] playersFound = GameObject.FindGameObjectsWithTag("Player");//find objects 
         foreach(GameObject player in playersFound)//itterate through each object
@@ -88,6 +95,8 @@ public class OnlineLevelManager : MonoBehaviour
             players[playerNum] = player;//assign the object to the correct slot 
         }
     }
+    #endregion
+
     // Update is called once per frame
     void Update()
     {
@@ -98,6 +107,7 @@ public class OnlineLevelManager : MonoBehaviour
         }
     }
     //Run a timer between waves for a prep time
+    #region ManageGameStates
     public void StartPrep()
     {
         currentState = GameStates.Prepping;
@@ -124,13 +134,11 @@ public class OnlineLevelManager : MonoBehaviour
         waves[currentWave].isActive = true;
         UIManager.UpdateUI();
     }
-    //Track player deaths and run game over 
 
     //Track waves completed and run victory
     public void EndWave()
     {
         currentWave++;
-        
         if (currentWave < waves.Length)
         {
             StartPrep();
@@ -138,6 +146,14 @@ public class OnlineLevelManager : MonoBehaviour
         else
         {
             currentState = GameStates.Won;
+            foreach (GameObject player in players)
+            {
+                if (!player.GetComponent<Health>().isDead)
+                {
+                    int playerNum = player.GetComponent<PlayerNumber>().playerNumber - 1;
+                    GameManager.instance.currentPlayers[playerNum].wavesSurvived++;
+                }
+            }
             UIManager.EndGameUI();
             Invoke("SaveResultsAndLoadScene", 5);
         }
@@ -159,6 +175,7 @@ public class OnlineLevelManager : MonoBehaviour
         currentPlayer.GetComponent<PlayerAttacks>().meleeCollider.SetActive(false);
         currentPlayer.GetComponent<PlayerAttacks>().enabled = false;
 
+        //Check to see if all players are dead. if so end the game
         bool anyAlive = false;
         foreach(GameObject player in players)
         {
@@ -169,6 +186,7 @@ public class OnlineLevelManager : MonoBehaviour
         }
         if(anyAlive == false)
         {
+            Debug.Log("No players alive");
             currentState = GameStates.Lost;
             UIManager.EndGameUI();
             Invoke("SaveResultsAndLoadScene",5);
@@ -195,6 +213,7 @@ public class OnlineLevelManager : MonoBehaviour
     }
     void SaveResultsAndLoadScene()
     {
+        Debug.Log("Loading the end of the game");
         GameManager.instance.FillTempList();
         GameManager.instance.FillSaveData();
         SceneManager.LoadScene("Results");
@@ -206,4 +225,24 @@ public class OnlineLevelManager : MonoBehaviour
         UIManager.UpdateUI();
         Debug.Log(GameManager.instance.currentPlayers[playerNumber].kills);
     }
+    #endregion
+
+    #region Pun event methods
+    private void OnEnable()
+    {
+        PhotonNetwork.AddCallbackTarget(this);
+    }
+    private void OnDisable()
+    {
+        PhotonNetwork.RemoveCallbackTarget(this);
+    }
+    public void OnEvent(EventData photonEvent)
+    {
+        if(photonEvent.Code == CHANGE_STATE)
+        {
+            object[] data = (object[])photonEvent.CustomData;
+            currentState = (GameStates)data[0];
+        }
+    }
+    #endregion
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Photon.Pun;
 /// <summary>
 /// Managing spawning of enemies for a wave, as well as how long the wave should last 
 /// this works alongside the level manager
@@ -19,12 +20,14 @@ public class WaveManager : MonoBehaviour
 
     public bool isActive;
     public bool isComplete;
+    public bool isOnline;
 
     public float timeBetweenSpawns;
     float timer;
 
     List<GameObject> enemiesSpawned = new List<GameObject>();
     List<GameObject> currentEnemiesSpawned = new List<GameObject>();
+
     [HideInInspector]
     public int killed;
 
@@ -53,10 +56,21 @@ public class WaveManager : MonoBehaviour
         //check if you can spawn
         if(enemiesSpawned.Count < maxNumberOverall && currentEnemiesSpawned.Count < maxNumberAtOnce)
         {
-            GameObject currentEnemy = Instantiate(enemyTypes[type], spawnPoints[pos].position, Quaternion.identity);
-            currentEnemy.GetComponent<EnemyHealthFromSpawner>().manager = this;
-            enemiesSpawned.Add(currentEnemy);
-            currentEnemiesSpawned.Add(currentEnemy);
+            if (isOnline)
+            {
+                GameObject currentEnemy = PhotonNetwork.Instantiate(enemyTypes[type].name, spawnPoints[pos].position, Quaternion.identity);
+                currentEnemy.GetComponent<EnemyHealthFromSpawner>().manager = this;
+                enemiesSpawned.Add(currentEnemy);
+                currentEnemiesSpawned.Add(currentEnemy);
+            }
+            else
+            {
+                GameObject currentEnemy = Instantiate(enemyTypes[type], spawnPoints[pos].position, Quaternion.identity);
+                currentEnemy.GetComponent<EnemyHealthFromSpawner>().manager = this;
+                enemiesSpawned.Add(currentEnemy);
+                currentEnemiesSpawned.Add(currentEnemy);
+            }
+            
         }
         //spawn the enemy
 

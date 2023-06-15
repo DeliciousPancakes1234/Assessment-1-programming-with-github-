@@ -19,7 +19,7 @@ public class OnlineTimer : MonoBehaviour,IOnEventCallback
 
     public UnityEvent TimesUp;
 
-    #region Photon Raie event code
+    #region Photon Raise event code
     //enable and disable the ability to listen to events 
     private void OnEnable()
     {
