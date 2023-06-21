@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: []
-  target: {fileID: 0}
+  target: {fileID: 1218002637177864663, guid: 68ee13b0fb62c6b40a420d64607849bd, type: 3}
 --- !u!1 &4309960250905096710
 GameObject:
   m_ObjectHideFlags: 0

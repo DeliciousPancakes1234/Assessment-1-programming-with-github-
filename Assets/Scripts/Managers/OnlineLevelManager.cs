@@ -242,6 +242,8 @@ public class OnlineLevelManager : MonoBehaviour, IOnEventCallback
         {
             object[] data = (object[])photonEvent.CustomData;
             currentState = (GameStates)data[0];
+            UIManager.UpdateUI();//Change1 
+            PhotonNetwork.RaiseEvent(CHANGE_STATE, data, RaiseEventOptions.Default, SendOptions.SendUnreliable);//Change2
         }
     }
     #endregion
