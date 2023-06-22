@@ -26,7 +26,7 @@ public class OnlinePlayerAttacks : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         shootingSound = GetComponent<AudioSource>();
         view = GetComponent<PhotonView>();
-        meleeCollider.GetComponent<PlayerAttackCollision>().playerNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+        meleeCollider.GetComponent<PlayerAttackCollision>().playerNumber = view.OwnerActorNr; //PhotonNetwork.LocalPlayer.ActorNumber;
     }
 
     // Update is called once per frame
